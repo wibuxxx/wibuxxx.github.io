@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Ompelimo - Mittatilausvaatteet ja Korjausompelu Tampereella</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #f4d03f;
+            padding: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: #f1c40f;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 1.1rem;
+        }
+
+        .contact-info div {
+            margin-bottom: 0.5rem;
+        }
+
+        nav {
+            background: rgba(26, 26, 26, 0.95);
+            padding: 1rem 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #f4d03f;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(244, 208, 63, 0.2);
+            transform: translateY(-2px);
+            color: #f1c40f;
+        }
+
+        .hero {
+            background: #1a1a1a;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-images {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .hero-image {
+            flex: 1;
+            background: #2d2d2d;
+            border: 2px solid #f1c40f;
+            margin: 20px 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #f4d03f;
+            font-weight: bold;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .section {
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .services-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 4rem 2rem;
+            z-index: 1;
+            opacity: 0.1;
+        }
+
+        .service-bg-image {
+            background: linear-gradient(135deg, #f1c40f, #d4af37);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            font-weight: bold;
+            border: 2px solid #8b4513;
+        }
+
+        .services-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section:nth-child(even) {
+            background: white;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, #f1c40f, #f39c12);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-row {
+            display: contents;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #f39c12;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(45deg, #e9ecef, #dee2e6);
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #f4d03f;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border: 2px solid rgba(244, 208, 63, 0.3);
+            color: white;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #f1c40f;
+        }
+
+        footer {
+            background: #0f0f0f;
+            color: #f4d03f;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #f4d03f;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #f1c40f;
+        }
+
+        .pricing-section {
+            background: linear-gradient(135deg, #2d1810, #1a0f08);
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 10px,
+                rgba(139, 69, 19, 0.1) 10px,
+                rgba(139, 69, 19, 0.1) 11px
+            );
+        }
+
+        .pricing-title {
+            font-size: 3rem;
+            text-align: center;
+            color: #f1c40f;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin-bottom: 3rem;
+            font-family: serif;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
+            border: 3px solid #8b4513;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 
+                0 8px 25px rgba(0,0,0,0.4),
+                inset 0 2px 10px rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid #8b4513;
+            border-radius: 15px;
+            pointer-events: none;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            color: #8b4513;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 3;
+        }
+
+        .pricing-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            z-index: 3;
+        }
+
+        .pricing-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 2px solid #8b4513;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .pricing-service {
+            font-size: 1.1rem;
+            color: #4a2c17;
+            font-weight: 500;
+        }
+
+        .pricing-price {
+            background: #8b4513;
+            color: #f4d03f;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .pricing-note {
+            text-align: center;
+            margin-top: 2rem;
+            color: #f4d03f;
+            font-style: italic;
+            font-size: 1.1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            position: relative;
+            z-index: 2;
+        }
+            .header-content {
+                text-align: center;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Fashion Ompelimo</div>
+                <div class="contact-info">
+                    <div style="color: white;">♦ Hämeenpuisto 33A, Tampere</div>
+                    <div style="color: white;">☎ 045 6171003</div>
+                    <div style="color: white;">✂ Ammattitaitoista ompelutyötä</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#etusivu">Etusivu</a></li>
+                <li><a href="#palvelut">Palvelut</a></li>
+                <li><a href="#hinnasto">Hinnasto</a></li>
+                <li><a href="#meista">Meistä</a></li>
+                <li><a href="#yhteystiedot">Yhteystiedot</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="etusivu">
+        <div class="hero-images">
+            <div class="hero-image">
+                KUVA 1<br/>
+                Puku / Mekko
+            </div>
+            <div class="hero-image">
+                KUVA 2<br/>
+                Ompelimo
+            </div>
+            <div class="hero-image">
+                KUVA 3<br/>
+                Korjaukset
+            </div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ammattitaitoista Ompelutyötä Tampereella</h1>
+                <p>Mittatilausvaatteet, puvut, mekot ja korjausompelu - kaikki samasta paikasta</p>
+                <p style="font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 500;">Avoinna ma-pe 10-19</p>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; font-weight: 500;">la 12-18</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="palvelut">
+        <div class="services-background">
+            <div class="service-bg-image">KUVA 1<br/>Ompelukone</div>
+            <div class="service-bg-image">KUVA 2<br/>Vaatteet</div>
+            <div class="service-bg-image">KUVA 3<br/>Mittanauha</div>
+            <div class="service-bg-image">KUVA 4<br/>Käsityöt</div>
+        </div>
+        <div class="container services-content">
+            <h2>Palvelut</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">👔</div>
+                    <h3>Mittatilausvaatteet</h3>
+                    <p>Räätälöimme sinulle täydellisesti istuvat vaatteet. Puvut, mekot ja muut vaatteet juuri sinun mittojesi mukaan.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎩</div>
+                    <h3>Puvut ja Mekot</h3>
+                    <p>Erikoistuneita hääpukuihin, juhlamekkoihin ja muihin juhlavaatteisiin. Teemme unelmavaatteistasi totta.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3>Korjausompelu</h3>
+                    <p>Korjaamme ja muutamme vaatteitasi ammattitaidolla. Vetoketjut, lyhennykset, kavennukset, palkkaukset ja paljon muuta.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📏</div>
+                    <h3>Mittojen Otto</h3>
+                    <p>Tarkka mittauspalvelu, jotta vaatteesi istuvat täydellisesti. Ammattitaitoiset mittaukset jokaiselle asiakkaalle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="hinnasto">
+        <div class="container">
+            <h2 class="pricing-title">HINNASTO</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Verhot</h3>
+                    <ul class="pricing-list">
+                        <li class="pricing-item">
+                            <span class="pricing-service">Lyhennys</span>
+                            <span class="pricing-price">25-30€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Ylä ja alakääne</span>
+                            <span class="pricing-price">30-40€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Kaikki Sivut</span>
+                            <span class="pricing-price">45-60€</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Takki (1/2)</h3>
+                    <ul class="pricing-list">
+                        <li class="pricing-item">
+                            <span class="pricing-service">Lahkeen lyhennys farkut</span>
+                            <span class="pricing-price">25-35€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Lahkeen lyhennys piilo-ommel</span>
+                            <span class="pricing-price">30-40€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Lahkeen lyhennys nahualla</span>
+                            <span class="pricing-price">30-35€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Lahkeen lyhennys upslaaki</span>
+                            <span class="pricing-price">30-40€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Lahkeen kavennus</span>
+                            <span class="pricing-price">25-50€</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Takki (2/2)</h3>
+                    <ul class="pricing-list">
+                        <li class="pricing-item">
+                            <span class="pricing-service">Vetoketjun vaihto</span>
+                            <span class="pricing-price">35-50€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Vetoketjun vaihto metalliketjulla</span>
+                            <span class="pricing-price">50-60€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Vetoketjun vaihto nahkatakit</span>
+                            <span class="pricing-price">50-70€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Takki vuorin uusiminen</span>
+                            <span class="pricing-price">130-200€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Hihojen lyhennys</span>
+                            <span class="pricing-price">45-60€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Puvun takin hihojen lyhennys</span>
+                            <span class="pricing-price">50-70€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Ulkoilu-/urheilutakin hihojen lyh</span>
+                            <span class="pricing-price">30-50€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Helmas lyhennykset</span>
+                            <span class="pricing-price">40-60€</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Hame/Mekko</h3>
+                    <ul class="pricing-list">
+                        <li class="pricing-item">
+                            <span class="pricing-service">Helmas lyhennys koneommel</span>
+                            <span class="pricing-price">25-45€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Helmas lyhennys piilo-ommel</span>
+                            <span class="pricing-price">40-60€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Vetoketjun vaihto</span>
+                            <span class="pricing-price">30-50€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Kavennukset/levennykset</span>
+                            <span class="pricing-price">30-65€</span>
+                        </li>
+                        <li class="pricing-item">
+                            <span class="pricing-service">Juhla/hääpuvun lyhennykset</span>
+                            <span class="pricing-price">45-160€</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="pricing-note">Hinnat sisältävät ALV:n sekä työnhön tarvittavan materiaalin.</p>
+        </div>
+    </section>
+
+    <section class="section" id="meista">
+        <div class="container">
+            <h2>Meistä</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Fashion Ompelimo on Tampereen arvostettu ompelimo, joka tarjoaa laadukasta mittatilausvaatteiden valmistusta ja korjausompelupalveluja.</p>
+                    
+                    <p>Meillä on pitkä kokemus vaatteiden valmistuksesta ja korjauksesta. Jokainen työ tehdään huolellisesti ja asiakkaan toiveiden mukaisesti.</p>
+                    
+                    <p>Erikoistuneita olemme erityisesti pukujen ja mekkojenvalmistukseen, mutta teemme myös kaikki korjausompelu työt ammattitaidolla.</p>
+                    
+                    <p>Asiakastyytyväisyys on meille tärkeintä - siksi käytämme vain laadukkaita materiaaleja ja tarkkaa käsityötä.</p>
+                </div>
+                <div class="about-image">
+                    <div>KUVA PLACEHOLDER<br/>🧵 Ammattitaitoista käsityötä<br/>✨ Laadukkaita materiaaleja<br/>❤️ Henkilökohtaista palvelua</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact-section" id="yhteystiedot">
+        <div class="container">
+            <h2 style="color: #f4d03f;">Yhteystiedot</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">▪</div>
+                    <h3 style="color: white;">Sijainti</h3>
+                    <p>Hämeenpuisto 33<br/>Tampere, Suomi</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">☎</div>
+                    <h3 style="color: white;">Puhelin</h3>
+                    <p>045 6171003</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✉</div>
+                    <h3 style="color: white;">Sähköposti</h3>
+                    <p>fashion.ompelimo@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Fashion Ompelimo. Kaikki oikeudet pidätetään.</p>
+            <div class="social-links">
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Instagram">📷</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Ammattitaitoista ompelutyötä Tampereella</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(26, 26, 26, 0.98)';
+            } else {
+                nav.style.background = 'rgba(26, 26, 26, 0.95)';
+            }
+        });
+
+        // Add fade-in animation for service cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
